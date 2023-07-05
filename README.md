@@ -1,7 +1,12 @@
 # kalbonyan-mern-app
 This is a MERN stack todo list application that serves as a test of your MERN knowledge. The project includes various features and tools to help you explore and enhance your understanding of the MERN stack.
 ![Your Notes (1)](https://github.com/HazemHussein14/kalbonyan-mern-app/assets/113997542/722b67a3-28c6-49e9-91c0-e5620f8105e6)
-## Features
+## Live Demo
+
+You can check out the live demo of the project [here](https://your-live-demo-url).
+
+
+### Features
 
 - Register user: Users can create new accounts to access the todo list functionality.
 - Login user: Registered users can log in to their accounts.
@@ -18,7 +23,7 @@ This is a MERN stack todo list application that serves as a test of your MERN kn
 - Server-side validation: The server performs validation of user input to maintain data integrity.
 - Tailwind CSS: Utility-first CSS framework for rapid UI development.
 
-## Tools
+### Tools
 
 The following tools and technologies were used in the development of this project:
 
