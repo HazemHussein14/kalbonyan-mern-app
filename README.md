@@ -21,13 +21,13 @@ You can check out the live demo of the project [here](https://your-live-demo-url
 - Protected routes: Routes are protected, ensuring that only authenticated users can access them.
 - Authentication: The application includes authentication mechanisms to ensure secure access.
 - Server-side validation: The server performs validation of user input to maintain data integrity.
-- Tailwind CSS: Utility-first CSS framework for rapid UI development.
 
 ### Tools
 
 The following tools and technologies were used in the development of this project:
 
 - React: JavaScript library for building user interfaces.
+- Tailwind CSS: Utility-first CSS framework for rapid UI development.
 - Node.js: JavaScript runtime environment.
 - Express: Web application framework for Node.js.
 - MongoDB: NoSQL database for storing application data.
