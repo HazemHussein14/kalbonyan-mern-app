@@ -1,5 +1,5 @@
 import { SignUp } from "../components";
-import { LogoIcon } from "../components/Icons";
+import LogoIcon from "../components/UI/LogoIcon";
 import ToggleLangBtn from "../components/UI/ToggleLangBtn";
 
 const Register = () => {
