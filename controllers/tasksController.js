@@ -37,11 +37,7 @@ const deleteTask = async (req, res) => {
   currentUser.tasks.pull(taskId);
   await currentUser.save();
 
-  const deletedTaskId = deletedTask._id;
-
-  res
-    .status(StatusCodes.OK)
-    .json({ deletedTaskId, msg: `deleted successfully!` });
+  res.status(StatusCodes.OK).json({ msg: `deleted successfully!` });
 };
 
 const clearCompletedTasks = async (req, res, next) => {
@@ -61,11 +57,10 @@ const clearCompletedTasks = async (req, res, next) => {
   }
 
   // Remove the completed tasks from both Task collection and currentUser's tasks array
-  const deletedTasks = await Task.deleteMany({
+  await Task.deleteMany({
     _id: { $in: completedTasks.map((task) => task._id) },
   });
 
-  console.log(deletedTasks);
   // Update the currentUser's tasks array by filtering out the deleted tasks
   currentUser.tasks = currentUser.tasks.filter(
     (taskId) => !completedTasks.some((task) => task._id.equals(taskId))
