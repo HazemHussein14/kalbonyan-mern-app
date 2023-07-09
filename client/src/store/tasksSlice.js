@@ -32,9 +32,7 @@ export const getAllTasks = createAsyncThunk("tasks/getAllTasks", async () => {
 
 export const deleteTask = createAsyncThunk("tasks/deleteTask", async (id) => {
   try {
-    const { data } = await authFetch.delete(`tasks/${id}`);
-    const { deletedTaskId } = data;
-    return deletedTaskId;
+    await authFetch.delete(`tasks/${id}`);
   } catch (error) {
     throw new Error(error.response.data.msg);
   }
@@ -87,9 +85,6 @@ export const tasksSlice = createSlice({
         state.error = action.error.message;
       })
       // DELETE TASK BY ID
-      .addCase(deleteTask.fulfilled, (state, action) => {
-        state.tasks = state.tasks.filter((task) => task._id !== action.payload);
-      })
       .addCase(deleteTask.rejected, (state, action) => {
         state.error = action.error.message;
       })
