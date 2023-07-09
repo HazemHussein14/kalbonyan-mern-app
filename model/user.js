@@ -33,9 +33,7 @@ const UserSchema = new Schema({
     maxLength: 20,
   },
   birthday: {
-    type: Number,
-    trim: true,
-    maxLength: 5,
+    type: Date,
   },
   tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }],
 });
