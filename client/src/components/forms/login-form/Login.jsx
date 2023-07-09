@@ -64,6 +64,7 @@ const Login = () => {
       <PasswordInput
         labelText={t("label_password")}
         handleChange={changeHandler}
+        name="password"
       />
       <button
         type="submit"

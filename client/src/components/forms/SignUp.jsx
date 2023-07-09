@@ -30,7 +30,7 @@ const SignUp = () => {
     <section className="p-4 bg-white md:p-8 dark:bg-[var(--secondaryDark-bg)]">
       {content}
       <aside className="text-center">
-        <p className="text-[var(--mainTxt)]">
+        <p className="text-[var(--mainTxt)] dark:text-[var(--mainDark-txt)]">
           {isMember ? t("have_no_account") : t("have_account")}
         </p>
         <button

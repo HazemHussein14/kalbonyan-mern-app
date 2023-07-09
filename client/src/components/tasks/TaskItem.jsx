@@ -1,12 +1,13 @@
 import { useDispatch } from "react-redux";
-import { RemoveIcon } from "../Icons";
-import { deleteTask, updateTask } from "../../store/tasksSlice";
+import { deleteTask, updateTask, getAllTasks } from "../../store/tasksSlice";
+import { HiXMark } from "react-icons/hi2";
 
 const TaskItem = ({ title, completed, id }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
     dispatch(deleteTask(id));
+    dispatch(getAllTasks());
   };
 
   const handleToggle = () => {
@@ -32,7 +33,7 @@ const TaskItem = ({ title, completed, id }) => {
         </p>
       </div>
       <button onClick={handleDelete} aria-label="delete todo">
-        <RemoveIcon fill="#5B5E7E" />
+        <HiXMark className="text-2xl text-[var(--mainTxt)] dark:text-[var(--mainDark-txt)]" />
       </button>
     </li>
   );

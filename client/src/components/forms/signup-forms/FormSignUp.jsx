@@ -6,9 +6,9 @@ import {
   updateFormStage,
 } from "../../../store/registerSlice";
 
-import { RightArrow, LeftArrow, EyeIcon, EyeSlashIcon } from "../../Icons";
 import PasswordInput from "../../UI/PasswordInput";
 import FormRow from "../../UI/FormRow";
+import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
 
 import { useTranslation } from "react-i18next";
 
@@ -27,12 +27,6 @@ const FormSignUp = () => {
     password,
     confirmPassword,
   });
-
-  // show and hide password
-  const [showPassword, setShowPassword] = useState(false);
-  const showPasswordHandler = () => {
-    setShowPassword((prevState) => !prevState);
-  };
 
   // match and check length for passwords
   const [passwordsMatch, setPasswordsMatch] = useState(true);
@@ -102,30 +96,12 @@ const FormSignUp = () => {
         {!validPasswordFormat && (
           <span className="text-red-600">{t("password_characters")}</span>
         )}
-        <div className="relative">
-          <label
-            htmlFor="confirmPassword"
-            className="block mb-1 text-[var(--mainTxt)] dark:text-[var(--mainDark-txt)]"
-          >
-            {t("label_confirmPass")}
-          </label>
-          <input
-            id="confirmPassword"
-            autoComplete="confirmPassword"
-            className="p-1 border-[1px] solid rounded-lg w-full input-shadow focus:outline-[var(--mainColor)] dark:bg-[#404363] dark:focus:outline-none dark:text-white"
-            type={showPassword ? "text" : "password"}
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={changeHandler}
-          />
-          <button
-            type="button"
-            className="absolute translate-y-1 ltr:right-2 rtl:left-2 text-[var(--secondaryTxt)]"
-            onClick={showPasswordHandler}
-          >
-            {!showPassword ? <EyeSlashIcon /> : <EyeIcon />}
-          </button>
-        </div>
+        <PasswordInput
+          labelText={t("label_confirmPass")}
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          handleChange={changeHandler}
+        />
 
         {!passwordsMatch && (
           <span className="text-red-600">{t("password_match")}</span>
@@ -138,7 +114,7 @@ const FormSignUp = () => {
           disabled={!isValid}
         >
           {t("complete_signUp_title")}{" "}
-          {direction === "rtl" ? <LeftArrow /> : <RightArrow />}
+          {direction === "rtl" ? <BsArrowLeft /> : <BsArrowRight />}
         </button>
       </form>
     </>

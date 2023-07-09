@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createTask } from "../../store/tasksSlice";
 import { useTranslation } from "react-i18next";
-import { AddIcon } from "../Icons";
+import {IoAddCircleOutline} from 'react-icons/io5'
 
 const TasksForm = () => {
   const { t } = useTranslation();
@@ -52,7 +52,7 @@ const TasksForm = () => {
         value={value}
       />
       <button aria-label="add task" className="text-[var(--mainColor)]">
-        <AddIcon />
+        <IoAddCircleOutline className="text-2xl"/>
       </button>
     </form>
   );

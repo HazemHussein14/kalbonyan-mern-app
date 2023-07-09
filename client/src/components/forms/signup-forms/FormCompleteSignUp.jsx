@@ -9,7 +9,7 @@ import {
 } from "../../../store/registerSlice";
 
 import FormRow from "../../UI/FormRow";
-import { RightArrow, LeftArrow } from "../../Icons";
+import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
 import { useTranslation } from "react-i18next";
 
 const FormCompleteSignUp = () => {
@@ -95,7 +95,7 @@ const FormCompleteSignUp = () => {
         handleChange={changeHandler}
       />
       <FormRow
-        type="number"
+        type="date"
         name="birthday"
         labelText={t("label_birthday")}
         value={formData.birthday}
@@ -109,14 +109,15 @@ const FormCompleteSignUp = () => {
         disabled={!isValid}
       >
         {t("complete_signUp_title")}{" "}
-        {direction === "rtl" ? <LeftArrow /> : <RightArrow />}
+        {direction === "rtl" ? <BsArrowLeft /> : <BsArrowRight />}
       </button>
       <button
         type="button"
         className="flex items-center justify-center w-full gap-2 py-2 text-xl font-semibold text-white bg-[var(--secondaryColor)] rounded-md"
         onClick={() => dispatch(updateFormStage(currentStage - 1))}
       >
-        {t("back_btn")} {direction === "rtl" ? <RightArrow /> : <LeftArrow />}
+        {t("back_btn")}{" "}
+        {direction === "rtl" ? <BsArrowRight /> : <BsArrowLeft />}
       </button>
     </form>
   );

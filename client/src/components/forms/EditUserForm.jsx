@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import FormRow from "../UI/FormRow";
 import PasswordInput from "../UI/PasswordInput";
@@ -17,8 +17,22 @@ const EditUserForm = ({ cancelEdit }) => {
     password: "",
     userName: user.userName,
     phone: user.phone,
-    birthday: user.birthday,
+    birthday: "",
   });
+
+  console.log(user.birthday);
+
+  useEffect(() => {
+    const date = new Date(user.birthday);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const formattedDate = `${year}-${month}-${day}`;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      birthday: formattedDate,
+    }));
+  }, [user.birthday]);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -71,6 +85,7 @@ const EditUserForm = ({ cancelEdit }) => {
             value={formData.password}
             handleChange={changeHandler}
             labelText={t("label_password")}
+            name="password"
           />
           <FormRow
             type="text"
@@ -87,7 +102,7 @@ const EditUserForm = ({ cancelEdit }) => {
             value={formData.phone}
           />
           <FormRow
-            type="number"
+            type="date"
             name="birthday"
             handleChange={changeHandler}
             labelText={t("label_birthday")}
