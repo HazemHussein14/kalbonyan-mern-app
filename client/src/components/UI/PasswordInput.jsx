@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { EyeIcon, EyeSlashIcon } from "../Icons";
-
-const PasswordInput = ({ labelText, value, handleChange }) => {
+import { HiOutlineEye,HiOutlineEyeOff } from "react-icons/hi";
+const PasswordInput = ({ labelText, value, handleChange, name }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const showPasswordHandler = () => {
@@ -17,11 +16,11 @@ const PasswordInput = ({ labelText, value, handleChange }) => {
         {labelText}
       </label>
       <input
-        autoComplete='password'
+        autoComplete="password"
         id={labelText}
         className="p-1 border-[1px] solid rounded-lg w-full input-shadow focus:outline-[var(--mainColor)] dark:bg-[#404363] dark:text-white dark:focus:outline-none"
         type={showPassword ? "text" : "password"}
-        name={showPassword ? "text" : "password"}
+        name={name}
         onChange={handleChange}
         value={value}
       />
@@ -31,7 +30,7 @@ const PasswordInput = ({ labelText, value, handleChange }) => {
         className="absolute translate-y-1 ltr:right-2 rtl:left-3 text-[var(--secondaryTxt)]"
         onClick={showPasswordHandler}
       >
-        {!showPassword ? <EyeSlashIcon /> : <EyeIcon />}
+        {!showPassword ? <HiOutlineEyeOff className="text-2xl dark:text-[var(--mainDark-txt)]" /> : <HiOutlineEye className="text-2xl dark:text-[var(--mainDark-txt)]"/>}
       </button>
     </div>
   );

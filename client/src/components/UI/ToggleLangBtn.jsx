@@ -23,7 +23,7 @@ const ToggleLangBtn = ({ useInNav }) => {
   }
   return (
     <button
-      className={`text-2xl md:text-3xl ${
+      className={`text-2xl md:text-4xl ${
         useInNav ? "" : "md:absolute md:bottom-[-5px] md:left-[5px]"
       }`}
       onClick={toggleLangHandler}

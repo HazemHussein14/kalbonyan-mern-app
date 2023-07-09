@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import DarkThemeIcon from "../Icons/DarkThemeIcon";
-import LightThemeIcon from "../Icons/LightThemeIcon";
 import toggleTheme from "../../utils/toggle-theme";
+import { BsMoonFill, BsSunFill } from "react-icons/bs";
 
 const ToggleThemeBtn = () => {
   const [theme, setTheme] = useState("light");
@@ -20,9 +19,9 @@ const ToggleThemeBtn = () => {
 
   let content;
   if (theme === "light") {
-    content = <DarkThemeIcon />;
+    content = <BsMoonFill style={{ fontSize: "28px" }} />;
   } else if (theme === "dark") {
-    content = <LightThemeIcon />;
+    content = <BsSunFill style={{ fontSize: "28px" }}/>;
   }
 
   return (
