@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import FormSignUp from "./signup-forms/FormSignUp";
 import FormCompleteSignUp from "./signup-forms/FormCompleteSignUp";
 import Login from "./login-form/Login";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const [isMember, setIsMember] = useState(false);
 
   const { formStage } = useSelector((state) => state.registerForm);
+  const { user } = useSelector((state) => state.authSlice);
 
   let content;
 
@@ -25,6 +28,12 @@ const SignUp = () => {
   const toggleMemberHandler = () => {
     setIsMember((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   return (
     <section className="p-4 bg-white md:p-8 dark:bg-[var(--secondaryDark-bg)]">

@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { setUpUser } from "../../../store/authSlice";
 
 import FormRow from "../../UI/FormRow";
@@ -10,9 +9,8 @@ import { useTranslation } from "react-i18next";
 const Login = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const { error, isLoading, user } = useSelector((state) => state.authSlice);
+  const { error, isLoading } = useSelector((state) => state.authSlice);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -33,12 +31,6 @@ const Login = () => {
       dispatch(setUpUser({ currentUser, endPoint: "login" }));
     }
   };
-
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-  }, [user, navigate]);
 
   return (
     <form className="flex flex-col gap-4 mb-3" onSubmit={handleSubmit}>
